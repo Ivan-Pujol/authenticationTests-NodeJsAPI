@@ -1,1 +1,1 @@
-#A simple project to learn how to do authentication with JWT and Node.
+#  A simple project to learn how to do authentication with JWT and Node.

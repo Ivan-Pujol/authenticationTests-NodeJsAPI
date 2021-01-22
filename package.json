@@ -1,0 +1,30 @@
+{
+  "name": "authentication",
+  "version": "1.0.0",
+  "description": "A simple API to learn and test how to do authorizatio with JWT / bcrypt & Nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ivan-Pujol/authenticationTests-NodeJsAPI.git"
+  },
+  "keywords": [
+    "JWT",
+    "bcrypt",
+    "NodeJs"
+  ],
+  "author": "Ivan Pujol IPL",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ivan-Pujol/authenticationTests-NodeJsAPI/issues"
+  },
+  "homepage": "https://github.com/Ivan-Pujol/authenticationTests-NodeJsAPI#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.13"
+  }
+}
