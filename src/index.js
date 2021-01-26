@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv').config();
+//dotenv.config();
 
 const app = express();
 
@@ -11,7 +13,7 @@ app.get('/', (req, res) => {
 });
 require('./Controller/authController')(app);
 
-const APP_PORT = process.env.PORT || 3000;
+const APP_PORT = process.env.PORT || 5000;
 app.listen(APP_PORT, () => {
   console.log(`Servidor iniciado na porta ${APP_PORT}`);
 });
