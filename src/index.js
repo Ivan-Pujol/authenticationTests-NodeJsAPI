@@ -12,6 +12,7 @@ app.get('/', (req, res) => {
   res.send({ message: "Welcome to auth test app with JWT" });
 });
 require('./Controller/authController')(app);
+require('./Controller/projectController')(app);
 
 const APP_PORT = process.env.PORT || 5000;
 app.listen(APP_PORT, () => {
