@@ -11,10 +11,10 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.send({ message: "Welcome to auth test app with JWT" });
 });
-require('./Controller/authController')(app);
-require('./Controller/projectController')(app);
+require('./app/Controller/index')(app);
 
-const APP_PORT = process.env.PORT || 5000;
+
+const APP_PORT = process.env.APPPORT || 5000;
 app.listen(APP_PORT, () => {
   console.log(`Servidor iniciado na porta ${APP_PORT}`);
 });
