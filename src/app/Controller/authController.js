@@ -58,15 +58,44 @@ router.post('/forgotten_password', async (req, res) => {
         passwordResetExpires: now,
       }
     });
-    console.log(token, now);
+    //console.log(token, now);
     mailer.sendMail({
       to: email,
-      from: "iplsofthouse@iplsofthouse.com",
-      template: 'auth/forgot_password',
-      context: { token },
-    })
+      from: "ivanovich.tigrao@gmail.com",
+      subject: "Forgotten Password",
+      //template: 'resources/mail/auth/forgot_password',
+      //context: { token },
+      html: `Hi, ${user.name}. Have you forgot your password? No problem, retrieve your password with this token : ${token}.`,
+    }), (err) => {
+      if (err) {
+        return res.status(400).send({ error: "Cannot sent forgot password email" });
+      }
+    }
+    return res.status(200).send("Done");
   } catch (err) {
     res.status(400).send({ error: "Error on forgotten password, try again later" });
+  }
+});
+
+router.post('/reset_password', async (req, res) => {
+  const { email, token, password } = req.body;
+  try {
+    const user = await User.findOne({ email }).select('+passwordResetToken passwordResetExpires');
+    if (!user) {
+      res.status(400).send({ error: "User not found" });
+    }
+    if (token !== user.passwordResetToken) {
+      res.status(400).send({ error: "Invalid token" });
+    }
+    const now = new Date();
+    if (now > user.passwordResetExpires) {
+      res.status(400).send({ error: "Token expired, please generate a new one" });
+    }
+    user.password = password;
+    await user.save();
+    res.send("The reset password succeed");
+  } catch (error) {
+    res.status(400).send({ error: "can not reset your passord, please try again later" });
   }
 });
 

@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 require('./app/Controller/index')(app);
 
 
-const APP_PORT = process.env.APPPORT || 5000;
+const APP_PORT = process.env.PORTAPP || 5000;
 app.listen(APP_PORT, () => {
   console.log(`Servidor iniciado na porta ${APP_PORT}`);
 });
